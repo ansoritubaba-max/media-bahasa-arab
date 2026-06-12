@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- PALET ROYAL AURORA (EMAS, BIRU, HIJAU, PUTIH ESTETIK) --- */
+  
+  --color-obsidian: #030812;         /* Midnight Blue sangat gelap (Base) */
+  --color-emerald-deep: #06181c;     /* Deep Teal/Cyan gelap (Depth) */
+  --color-emerald-glow: #10b981;     /* Hijau Emerald (Untuk pendaran sudut) */
+  --color-sapphire-glow: #1e40af;    /* Biru Sapphire (Untuk pendaran sudut) */
+  
+  --color-gold-champagne: #D4AF37;   /* Emas Sampanye Elegan */
+  --color-gold-light: #FFFAED;       /* Putih Estetik Hangat (Warm Pearl White) */
+  --color-platinum: #F1F5F9;         /* Putih Estetik Dingin (Cool Pearl White untuk teks) */
+  
+  /* Animasi Custom untuk UI Mahal */
+  --animate-float-slow: float-slow 6s ease-in-out infinite;
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+/* --- BASE STYLES & CINEMATIC LIGHTING --- */
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--color-obsidian);
+  color: var(--color-platinum);
+  
+  /* THE MAGIC: Pencahayaan Studio Sinematik
+    1. Sorotan Biru Sapphire di kiri atas
+    2. Sorotan Hijau Emerald di kanan bawah
+    3. Dasaran Midnight Teal yang misterius
+  */
+  background-image: 
+    radial-gradient(circle at 15% 0%, rgba(30, 64, 175, 0.35) 0%, transparent 45%),
+    radial-gradient(circle at 85% 100%, rgba(16, 185, 129, 0.25) 0%, transparent 50%),
+    linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-emerald-deep) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* --- THE SECRET SAUCE: NOISE TEXTURE OVERLAY --- */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04; /* Tekstur butiran film halus yang membuat gradien tidak terlihat murahan */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --- UTILITIES MEWAH --- */
+
+/* 1. Font Arab dengan Inner Glow */
+.font-arab {
+  font-family: 'Amiri', serif;
+  line-height: 1.8;
+  text-shadow: 0 2px 15px rgba(212, 175, 55, 0.2); 
+}
+
+/* 2. Glassmorphism Tingkat Dewa (Iridescent Edges) */
+.glass-premium {
+  /* Lapisan putih estetik yang sangat tipis */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  
+  /* Border dengan ilusi pantulan cahaya sekitar (Atas Emas, Kiri Biru, Kanan Hijau) */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(212, 175, 55, 0.4); 
+  border-left: 1px solid rgba(30, 64, 175, 0.3);
+  border-right: 1px solid rgba(16, 185, 129, 0.2);
+  
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* 3. Teks Gradien Emas Premium (Dari Emas Putih Estetik ke Emas Tua) */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-champagne) 50%, #9A7B26 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- CUSTOM SCROLLBAR EKSKLUSIF --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.8);
+}
+
+html {
+  scroll-behavior: smooth;
+}
