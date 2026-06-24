@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 
 // --- DATA KOSAKATA BAB 1 ---
 const KOSAKATA_DATA = [
-  { id: 1, arab: "الإِسْلَامُ", arti: "Agama Islam", audio: "/sound/islam.mp3", icon: "🕋" },
+  { id: 1, arab: "الإِسْلَامُ", arti: "Agama Islam", audio: "/sound/islam1.mp3", icon: "🕋" },
   { id: 2, arab: "بِرُوْتِسْتَانْتِيَّة", arti: "Agama Protestan", audio: "/sound/protestan.mp3", icon: "✝️" },
   { id: 3, arab: "الْكَاثُوْلِيْكِيَّة", arti: "Agama Katolik", audio: "/sound/katolik.mp3", icon: "⛪" },
   { id: 4, arab: "هِنْدُوْسِيَّة", arti: "Agama Hindu", audio: "/sound/hindu.mp3", icon: "🕉️" },
@@ -32,6 +32,8 @@ const KOSAKATA_BAB2_DATA = [
   { id: 23, madhi: "تَسَامَحَ", masdar: "تَسَامُحٌ", arti: "Toleransi", audio: "/sound/tasamuh2.mp3", icon: "🤝" },
   { id: 24, madhi: "تَقَرَّبَ", masdar: "تَقَرُّبٌ", arti: "Mendekatkan diri", audio: "/sound/taqarrub.mp3", icon: "❤️" },
   { id: 25, madhi: "تَعَايَشَ", masdar: "التَّعَايُشُ", arti: "Hidup berdampingan", audio: "/sound/taayush.mp3", icon: "🌍" },
+
+  { id: 26, madhi: "صَلَّى", masdar: "صَلَاةٌ", arti: "Sholat", audio: "/sound/sholat.mp3", icon: "🧎‍♂️" },
 ];
 
 const cardVariants = {
@@ -44,13 +46,20 @@ const cardVariants = {
   })
 };
 
-// --- KOMPONEN KARTU BAB 1 (DIBIARKAN SAMA - ARTI MUNCUL SAAT HOVER) ---
+// --- KOMPONEN KARTU BAB 1 (DENGAN TOMBOL) ---
 const KosakataCard = ({ item, index }) => {
+  const [showArti, setShowArti] = useState(false);
+
   const playAudio = () => {
     if (item.audio) {
       const sound = new Audio(item.audio);
       sound.play().catch(error => console.log("Audio belum ditambahkan:", error));
     }
+  };
+
+  const toggleArti = (e) => {
+    e.stopPropagation(); 
+    setShowArti(!showArti);
   };
 
   return (
@@ -60,11 +69,12 @@ const KosakataCard = ({ item, index }) => {
       whileHover={{ y: -6, scale: 1.02 }}
       whileTap={{ scale: 0.95 }}
       onClick={playAudio} 
-      className="glass-premium relative group rounded-[1.5rem] p-5 flex flex-col items-center justify-center text-center cursor-pointer overflow-hidden min-h-[190px] border border-white/5 hover:border-[var(--color-gold-champagne)]/30 transition-all duration-300"
+      className="glass-premium relative group rounded-[1.5rem] p-5 flex flex-col items-center justify-center text-center cursor-pointer overflow-hidden min-h-[220px] border border-white/5 hover:border-[var(--color-gold-champagne)]/30 transition-all duration-300"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-gold-champagne)]/0 to-[var(--color-gold-champagne)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      <div className="relative w-16 h-16 mb-4 flex items-center justify-center">
+      {/* Wadah Ikon (Otomatis naik saat tombol ditekan) */}
+      <div className={`relative w-16 h-16 mb-4 flex items-center justify-center transition-transform duration-500 ${showArti ? '-translate-y-2' : ''}`}>
         <div className="absolute inset-0 bg-[var(--color-emerald-glow)] rounded-full blur-md opacity-30 group-hover:opacity-70 group-hover:bg-[var(--color-gold-champagne)] transition-all duration-500" />
         <div className="relative z-10 w-14 h-14 bg-white/5 border border-[var(--color-gold-champagne)]/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-inner group-hover:border-[var(--color-gold-champagne)] transition-colors duration-500">
           <motion.span 
@@ -77,14 +87,29 @@ const KosakataCard = ({ item, index }) => {
         </div>
       </div>
 
-      <h3 className="text-xl md:text-2xl font-bold font-arab text-[var(--color-gold-champagne)] drop-shadow-md mb-2 transition-transform duration-500 group-hover:-translate-y-2">
+      <h3 className={`text-xl md:text-2xl font-bold font-arab text-[var(--color-gold-champagne)] drop-shadow-md mb-2 transition-transform duration-500 ${showArti ? '-translate-y-3' : 'group-hover:-translate-y-2'}`}>
         {item.arab}
       </h3>
 
-      <div className="absolute bottom-4 left-0 right-0 px-2 flex justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out pointer-events-none">
+      {/* Teks Terjemahan (Muncul jika tombol ditekan) */}
+      <div className={`absolute bottom-12 left-0 right-0 px-2 flex justify-center transition-all duration-300 ease-out pointer-events-none ${showArti ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <span className="w-full max-w-[90%] px-3 py-1.5 bg-[var(--color-obsidian)]/90 border border-[var(--color-gold-champagne)]/40 rounded-xl text-[11px] md:text-xs font-bold text-[var(--color-platinum)] uppercase tracking-wide backdrop-blur-md shadow-lg line-clamp-1">
           {item.arti}
         </span>
+      </div>
+
+      {/* Tombol Toggle Arti */}
+      <div className="absolute bottom-3 left-0 right-0 flex justify-center z-20">
+        <button
+          onClick={toggleArti}
+          className={`px-3 py-1 rounded-full border text-[9px] md:text-[10px] transition-all duration-300 backdrop-blur-sm active:scale-95 ${
+            showArti 
+            ? 'bg-[var(--color-gold-champagne)]/20 border-[var(--color-gold-champagne)]/50 text-[var(--color-gold-champagne)]' 
+            : 'bg-[var(--color-obsidian)]/50 border-[var(--color-gold-champagne)]/30 text-[var(--color-platinum)]/80 hover:text-[var(--color-gold-champagne)] hover:bg-[var(--color-gold-champagne)]/10'
+          }`}
+        >
+          {showArti ? "Sembunyikan Arti" : "Lihat Arti"}
+        </button>
       </div>
 
       {/* Ikon Speaker */}
@@ -98,9 +123,9 @@ const KosakataCard = ({ item, index }) => {
   );
 };
 
-// --- KOMPONEN KARTU BAB 2 (ARTI MUNCUL JIKA TOMBOL DITEKAN) ---
+// --- KOMPONEN KARTU BAB 2 (DENGAN TOMBOL & IKON) ---
 const KosakataBab2Card = ({ item, index }) => {
-  const [showArti, setShowArti] = useState(false); // State untuk mengontrol visibilitas arti
+  const [showArti, setShowArti] = useState(false);
 
   const playAudio = () => {
     if (item.audio) {
@@ -110,7 +135,7 @@ const KosakataBab2Card = ({ item, index }) => {
   };
 
   const toggleArti = (e) => {
-    e.stopPropagation(); // Mencegah klik tombol agar tidak memutar audio
+    e.stopPropagation(); 
     setShowArti(!showArti);
   };
 
@@ -121,12 +146,27 @@ const KosakataBab2Card = ({ item, index }) => {
       whileHover={{ y: -6, scale: 1.02 }}
       whileTap={{ scale: 0.95 }}
       onClick={playAudio} 
-      className="glass-premium relative group rounded-[1.5rem] p-4 flex flex-col items-center justify-center text-center cursor-pointer overflow-hidden min-h-[190px] border border-white/5 hover:border-[var(--color-gold-champagne)]/30 transition-all duration-300"
+      // min-h-[260px] untuk memberi ruang pada ikon, 2 teks arab, dan terjemahan
+      className="glass-premium relative group rounded-[1.5rem] p-4 flex flex-col items-center justify-center text-center cursor-pointer overflow-hidden min-h-[260px] border border-white/5 hover:border-[var(--color-gold-champagne)]/30 transition-all duration-300"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-gold-champagne)]/0 to-[var(--color-gold-champagne)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
+      {/* Wadah Ikon untuk Bab 2 */}
+      <div className={`relative w-12 h-12 md:w-14 md:h-14 mb-2 flex items-center justify-center transition-transform duration-500 ${showArti ? '-translate-y-3' : ''}`}>
+        <div className="absolute inset-0 bg-[var(--color-emerald-glow)] rounded-full blur-md opacity-30 group-hover:opacity-70 group-hover:bg-[var(--color-gold-champagne)] transition-all duration-500" />
+        <div className="relative z-10 w-10 h-10 md:w-12 md:h-12 bg-white/5 border border-[var(--color-gold-champagne)]/20 backdrop-blur-md rounded-full flex items-center justify-center shadow-inner group-hover:border-[var(--color-gold-champagne)] transition-colors duration-500">
+          <motion.span 
+            animate={{ y: [-2, 2, -2] }}
+            transition={{ repeat: Infinity, duration: 3 + (index * 0.2), ease: "easeInOut" }}
+            className="text-xl md:text-2xl filter saturate-50 opacity-80 group-hover:saturate-150 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 drop-shadow-md"
+          >
+            {item.icon}
+          </motion.span>
+        </div>
+      </div>
+
       {/* Bagian Arab: Madhi & Masdar (Otomatis naik ke atas jika tombol arti ditekan) */}
-      <div className={`flex flex-col items-center justify-center gap-1 mb-2 transition-transform duration-500 ${showArti ? '-translate-y-5' : 'group-hover:-translate-y-2'}`}>
+      <div className={`flex flex-col items-center justify-center gap-1 mb-2 transition-transform duration-500 ${showArti ? '-translate-y-4' : 'group-hover:-translate-y-2'}`}>
         <span className="text-lg md:text-xl font-arab text-[var(--color-platinum)]/70 drop-shadow-sm">
           {item.madhi}
         </span>
@@ -206,7 +246,7 @@ export default function Kosakata() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xs md:text-sm lg:text-base text-[var(--color-platinum)]/70 font-light tracking-wide max-w-md mx-auto px-4"
           >
-            Arahkan kursor untuk melihat terjemahan, dan <strong className="text-[var(--color-gold-champagne)] font-medium">ketuk kartu</strong> untuk mendengarkan audionya.
+            Ketuk <strong className="text-[var(--color-gold-champagne)] font-medium">Lihat Arti</strong> untuk memunculkan terjemahan, dan ketuk kartunya untuk mendengarkan audionya.
           </motion.p>
         </div>
 

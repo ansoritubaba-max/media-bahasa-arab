@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- PALET ROYAL AURORA (EMAS, BIRU, HIJAU, PUTIH ESTETIK) --- */
+  /* --- PALET ELEGAN (EMAS, DEEP GREEN, PUTIH MUTIARA) --- */
   
-  --color-obsidian: #030812;         /* Midnight Blue sangat gelap (Base) */
-  --color-emerald-deep: #06181c;     /* Deep Teal/Cyan gelap (Depth) */
-  --color-emerald-glow: #10b981;     /* Hijau Emerald (Untuk pendaran sudut) */
-  --color-sapphire-glow: #1e40af;    /* Biru Sapphire (Untuk pendaran sudut) */
-  
+  --color-obsidian: #050a08;         /* Midnight Forest sangat gelap (Base) */
+  --color-emerald-deep: #021a14;     /* Deep Green sangat gelap (Depth) */
+  --color-emerald-glow: #064e3b;     /* Hijau tua elegan (Bukan hijau stabilo) */
   --color-gold-champagne: #D4AF37;   /* Emas Sampanye Elegan */
+  --color-gold-glow: #9c7b16;        /* Pendaran emas redup untuk ambiance */
   --color-gold-light: #FFFAED;       /* Putih Estetik Hangat (Warm Pearl White) */
   --color-platinum: #F1F5F9;         /* Putih Estetik Dingin (Cool Pearl White untuk teks) */
   
@@ -28,13 +27,13 @@ body {
   color: var(--color-platinum);
   
   /* THE MAGIC: Pencahayaan Studio Sinematik
-    1. Sorotan Biru Sapphire di kiri atas
-    2. Sorotan Hijau Emerald di kanan bawah
-    3. Dasaran Midnight Teal yang misterius
+    1. Sorotan Deep Green di kiri atas (Halus dan membumi)
+    2. Sorotan Emas Redup di kanan bawah (Memberi kesan hangat/mewah)
+    3. Dasaran warna hitam dengan undertone hijau yang misterius
   */
   background-image: 
-    radial-gradient(circle at 15% 0%, rgba(30, 64, 175, 0.35) 0%, transparent 45%),
-    radial-gradient(circle at 85% 100%, rgba(16, 185, 129, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 15% 0%, rgba(6, 78, 59, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 85% 100%, rgba(156, 123, 22, 0.12) 0%, transparent 50%),
     linear-gradient(135deg, var(--color-obsidian) 0%, var(--color-emerald-deep) 100%);
   background-attachment: fixed;
   overflow-x: hidden;
@@ -63,20 +62,20 @@ body::after {
   text-shadow: 0 2px 15px rgba(212, 175, 55, 0.2); 
 }
 
-/* 2. Glassmorphism Tingkat Dewa (Iridescent Edges) */
+/* 2. Glassmorphism Tingkat Dewa (Real Glass, Bukan Casing Plastik) */
 .glass-premium {
-  /* Lapisan putih estetik yang sangat tipis */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.005) 100%);
+  /* Lapisan putih estetik yang jernih dan netral */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
   
-  /* Border dengan ilusi pantulan cahaya sekitar (Atas Emas, Kiri Biru, Kanan Hijau) */
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-top: 1px solid rgba(212, 175, 55, 0.4); 
-  border-left: 1px solid rgba(30, 64, 175, 0.3);
-  border-right: 1px solid rgba(16, 185, 129, 0.2);
+  /* Border dengan ilusi pantulan cahaya lingkungan murni (Perak & Emas) */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(212, 175, 55, 0.35); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
   
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  /* Bayangan solid untuk pemisahan dari background + Inset putih untuk ketebalan kaca */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* 3. Teks Gradien Emas Premium (Dari Emas Putih Estetik ke Emas Tua) */
