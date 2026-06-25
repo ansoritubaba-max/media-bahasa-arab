@@ -226,7 +226,7 @@ export default function Kosakata() {
             className="inline-block px-6 py-2 rounded-full border border-[var(--color-gold-champagne)]/30 bg-[var(--color-emerald-glow)]/20 backdrop-blur-sm mb-6 shadow-lg"
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-arab text-gold-gradient font-bold drop-shadow-lg">
-              الْقِرَاءَةُ
+              Mufradat Inti (المفردات الأساسية)
             </h2>
           </motion.div>
           
@@ -275,7 +275,7 @@ export default function Kosakata() {
 
             <div className="inline-block px-5 py-1.5 rounded-md border border-[var(--color-gold-champagne)]/20 bg-[var(--color-obsidian)]/50 backdrop-blur-sm mb-4">
                 <h2 className="text-sm md:text-base font-bold text-[var(--color-gold-champagne)] tracking-widest uppercase">
-                  Bab 2
+                  Mufradat Tambahan (المفردات الإضافية)
                 </h2>
             </div>
             

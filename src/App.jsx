@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BackgroundAnimated from './components/BackgroundAnimated';
 import Hero from './components/Hero';
 import Intro from './components/Intro';
+import Biografi from './components/Biografi';
 import CapaianKompetensi from './components/CapaianKompetensi';
 import Kosakata from './components/Kosakata';
 import Materi from './components/Materi';
@@ -18,14 +19,24 @@ function App() {
   // Fungsi untuk me-render komponen berdasarkan state activePage
   const renderPage = () => {
     switch (activePage) {
-      case 'home': return <Hero setActivePage={setActivePage} />; // Kita lempar fungsi ini ke Hero
-      case 'intro': return <Intro />;
-      case 'kompetensi': return <CapaianKompetensi />;
-      case 'kosakata': return <Kosakata />;
-      case 'materi': return <Materi />;
-      case 'video': return <VideoSection />;
-      case 'kuis': return <Quiz />;
-      default: return <Hero setActivePage={setActivePage} />;
+      case 'home': 
+        return <Hero setActivePage={setActivePage} />; 
+      case 'biografi': 
+        return <Biografi setActivePage={setActivePage} />; // <-- Ini yang sebelumnya terlewat
+      case 'intro': 
+        return <Intro setActivePage={setActivePage} />;
+      case 'kompetensi': 
+        return <CapaianKompetensi />;
+      case 'kosakata': 
+        return <Kosakata />;
+      case 'materi': 
+        return <Materi />;
+      case 'video': 
+        return <VideoSection />;
+      case 'kuis': 
+        return <Quiz />;
+      default: 
+        return <Hero setActivePage={setActivePage} />;
     }
   };
 

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 // --- 1. KOMPONEN TOMBOL MAGNETIK ---
-const MagneticButton = ({ children, onClick }) => {
+const MagneticButton = ({ children, onClick, className = "" }) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -25,10 +25,10 @@ const MagneticButton = ({ children, onClick }) => {
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       whileTap={{ scale: 0.95 }}
-      className="relative overflow-hidden glass-premium px-12 py-5 rounded-full group cursor-pointer"
+      className={`relative overflow-hidden glass-premium px-8 md:px-12 py-4 md:py-5 rounded-full group cursor-pointer w-full md:w-auto flex justify-center ${className}`}
     >
       <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-[var(--color-gold-champagne)] to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-1000 ease-out" />
-      <span className="relative z-10 font-bold text-[var(--color-gold-champagne)] uppercase tracking-[0.25em] text-sm group-hover:text-[var(--color-gold-light)] transition-colors duration-300">
+      <span className="relative z-10 font-bold text-[var(--color-gold-champagne)] uppercase tracking-[0.2em] md:tracking-[0.25em] text-xs md:text-sm group-hover:text-[var(--color-gold-light)] transition-colors duration-300">
         {children}
       </span>
     </motion.button>
@@ -63,7 +63,7 @@ export default function Hero({ setActivePage }) {
         transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
         className="relative z-10 w-full lg:w-5/12 text-center lg:text-left flex flex-col items-center lg:items-start mt-10 lg:mt-0"
       >
-        {/* --- LOGO PRIBADI DENGAN HALO GLOW (Agar warna hijau logo tidak mati/bentrok) --- */}
+        {/* --- LOGO PRIBADI DENGAN HALO GLOW --- */}
         <motion.div
           initial={{ opacity: 0, y: -20, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -107,21 +107,39 @@ export default function Hero({ setActivePage }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="text-base md:text-lg lg:text-xl text-[var(--color-platinum)] opacity-80 font-light mb-12 leading-loose max-w-lg tracking-wide"
+          className="text-base md:text-lg lg:text-xl text-[var(--color-platinum)] opacity-80 font-light mb-10 leading-loose max-w-lg tracking-wide"
         >
           Jelajahi keanekaragaman dan toleransi beragama melalui antarmuka interaktif yang dirancang khusus untuk kenyamanan visual tingkat tinggi.
         </motion.p>
 
-        {/* Pemanggilan Tombol */}
+        {/* --- GRUP TOMBOL (Ditumpuk secara vertikal) --- */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.8 }}
+          className="flex flex-col gap-4 w-full md:w-auto min-w-[280px]"
         >
-          <MagneticButton onClick={() => setActivePage('intro')}>
-            Petunjuk Penggunaan
+          {/* Tombol 1: Biografi Pembuat */}
+          <MagneticButton onClick={() => setActivePage('biografi')}>
+            <span className="flex items-center justify-center gap-3">
+              <svg className="w-5 h-5 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Biografi Pembuat
+            </span>
+          </MagneticButton>
+
+          {/* Tombol 2: Petunjuk Penggunaan (Dibuat sedikit transparan agar hierarkinya sebagai tombol kedua lebih jelas) */}
+          <MagneticButton onClick={() => setActivePage('intro')} className="bg-black/20 border-white/5 hover:border-[var(--color-gold-champagne)]/30">
+            <span className="flex items-center justify-center gap-3">
+              <svg className="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Petunjuk Penggunaan
+            </span>
           </MagneticButton>
         </motion.div>
+
       </motion.div>
 
       {/* --- BAGIAN KANAN: VIDEO CINEMATIC --- */}
@@ -160,7 +178,7 @@ export default function Hero({ setActivePage }) {
               <span className="text-[10px] text-white/80 tracking-widest uppercase font-bold">Visual Konteks</span>
             </div>
             <h3 className="text-white/90 font-arab text-2xl md:text-3xl drop-shadow-lg font-bold">
-              التَّسَامُحُ الدِّيْنِيُّ
+              التَّسَامُحُ الدِّيْنِيُّ
             </h3>
           </div>
           

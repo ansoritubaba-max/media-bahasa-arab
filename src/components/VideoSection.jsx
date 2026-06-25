@@ -129,28 +129,40 @@ export default function VideoSection() {
           {/* --- BAGIAN DESKRIPSI VIDEO --- */}
           <motion.div 
             variants={descriptionAnimation}
-            className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-white/10 flex flex-col gap-4 relative z-10"
+            className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-white/10 flex flex-col gap-5 relative z-10"
           >
-            {/* Header Deskripsi */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+
+
+            {/* <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
               <div>
                 <span className="inline-block px-3 py-1 bg-[#BF953F]/20 border border-[#BF953F]/30 text-[#FCF6BA] rounded-full text-[10px] md:text-xs font-semibold tracking-wider uppercase mb-3">
                   Semester 2 • Bab 6
                 </span>
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-1">Agama-agama di Indonesia</h3>
-                <p className="text-sm md:text-base text-[#FCF6BA]/80">Bagian Kedua: Istima' Mufrodat dan Qiro'ah Agama</p>
+                <p className="text-sm md:text-base text-[#FCF6BA]/80">Mufradat Inti (المفردات الأساسية)</p>
               </div>
-              
-              {/* Teks Arab Rata Kanan */}
-              <h4 className="text-xl md:text-2xl font-arab text-transparent bg-clip-text bg-gradient-to-l from-[#BF953F] to-[#FCF6BA] text-right drop-shadow-md" dir="rtl">
-                الدرس السادس - الأديان في إندونيسيا - الاستماع
-              </h4>
-            </div>
 
-            {/* Paragraf Penjelasan */}
-            <p className="text-sm md:text-base text-gray-300/90 leading-relaxed font-light mt-2 mb-2">
-              Pada video ini kita akan mempelajari kosakata dan teks qiro'ah tentang agama. Materi bahasa arab ini diadaptasi secara khusus untuk kelas 11 Madrasah Aliyah.
-            </p>
+              <h4 className="text-xl md:text-2xl font-arab text-transparent bg-clip-text bg-gradient-to-l from-[#BF953F] to-[#FCF6BA] text-right drop-shadow-md" dir="rtl">
+                الدرس السادس - الأديان في إندونيسيا
+              </h4>
+            </div> */}
+
+            {/* Paragraf Penjelasan & Link YouTube */}
+            <div className="text-sm md:text-base text-gray-300/90 leading-relaxed font-light">
+              <p className="mb-3">
+                Video ini disajikan sebagai media pendukung pembelajaran maharah qiro'ah agar peserta didik kelas XI Madrasah Aliyah dapat berlatih membaca teks bacaan <span className="font-arab font-medium text-white">الأَدْيَانُ فِي إِنْدُونِيسِيَا</span> dengan mufrodat, makhraj, intonasi, serta pemahaman makna dan informasi teks bacaan yang tepat.
+              </p>
+              
+              {/* Keterangan Tautan YouTube Bergaya Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-black/20 border border-white/5">
+                <svg className="w-4 h-4 text-[#ff0000]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+                <span className="text-xs md:text-sm text-gray-400">
+                  Sumber YouTube: <a href="https://youtu.be/uHyI64B3s1U?si=1mC7mT-6MpLkJIuR" target="_blank" rel="noopener noreferrer" className="text-[#BF953F] hover:text-[#FCF6BA] transition-colors underline-offset-4 hover:underline">https://youtu.be/uHyI64B3s1U</a>
+                </span>
+              </div>
+            </div>
 
             {/* Footer / Resource Link Area */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 p-4 rounded-2xl bg-black/30 border border-white/5 backdrop-blur-md">
@@ -167,7 +179,7 @@ export default function VideoSection() {
               </div>
 
               <a 
-                href="https://docs.google.com/file/d/1Oqj04..." 
+                href="https://drive.google.com/file/d/1yQhv0Shi8IMsmRQCR-3OMp4tWu4cnPWC/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto group flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#BF953F]/20 to-[#B38728]/20 border border-[#BF953F]/40 text-[#FCF6BA] hover:bg-[#BF953F]/40 hover:scale-105 transition-all duration-300 text-sm font-medium shadow-[0_0_15px_rgba(191,149,63,0.1)] hover:shadow-[0_0_25px_rgba(191,149,63,0.3)]"
