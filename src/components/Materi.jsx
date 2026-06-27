@@ -216,8 +216,8 @@ export default function Materi() {
 {/* =========================================
     BAGIAN 3: ANALISIS TEKS DESKRIPTIF (NASH WASHFI) + VIDEO SYNC
 ========================================== */}
-<div className="mb-24">
-  {/* Header Section */}
+{/* <div className="mb-24">
+
   <div className="text-center mb-16">
     <motion.h2 
       initial={{ opacity: 0, y: 20 }}
@@ -233,10 +233,9 @@ export default function Materi() {
     <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-gold-champagne)] to-transparent mx-auto" />
   </div>
 
-  {/* LAYOUT UTAMA: SPLIT VIDEO DAN DETAIL KONSEP */}
+
   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-stretch">
-    
-    {/* Kiri: Wadah Video Autoplay Sesuai Permintaan */}
+
     <motion.div
       initial={{ opacity: 0, x: -30 }}
       whileInView={{ opacity: 1, x: 0 }}
@@ -244,10 +243,10 @@ export default function Materi() {
       transition={{ duration: 0.8 }}
       className="lg:col-span-5 rounded-[2.5rem] glass-premium overflow-hidden relative min-h-[300px] lg:min-h-full flex flex-col justify-between p-6 group border border-white/10"
     >
-      {/* Pendaran Latar di Belakang Video */}
+
       <div className="absolute -top-12 -left-12 w-48 h-48 bg-[var(--color-emerald-glow)] opacity-40 blur-3xl rounded-full pointer-events-none group-hover:opacity-70 transition-opacity" />
       
-      {/* Elemen Video Native (Autoplay saat scroll sampai, muted wajib agar bisa autoplay otomatis di browser modern) */}
+      
       <div className="absolute inset-4 rounded-[1.8rem] overflow-hidden bg-black/40 border border-white/5 shadow-inner">
         <video 
           src="/video-analisis.mp4" 
@@ -257,17 +256,16 @@ export default function Materi() {
           playsInline
           className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000 ease-in-out"
         />
-        {/* Lapisan Gradien Gelap di Atas Video agar Konten Teks Tetap Terbaca */}
+
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-obsidian)] via-transparent to-black/20 pointer-events-none" />
       </div>
 
-      {/* Label Indikator Mengambang */}
+
       <div className="relative z-10 self-start px-4 py-1.5 rounded-full bg-[var(--color-obsidian)]/80 backdrop-blur-md border border-[var(--color-gold-champagne)]/30 text-[var(--color-gold-champagne)] text-[10px] font-bold tracking-widest uppercase flex items-center gap-2 shadow-lg">
         <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
         Live Visual Media
       </div>
 
-      {/* Teks Keterangan di Bawah Video */}
       <div className="relative z-10 mt-auto pt-40">
         <p className="text-xs text-[var(--color-platinum)]/40 uppercase tracking-widest font-bold mb-1">Visualisasi Konteks</p>
         <p className="text-sm text-[var(--color-platinum)]/80 font-light leading-relaxed">
@@ -276,7 +274,7 @@ export default function Materi() {
       </div>
     </motion.div>
 
-    {/* Kanan: Detail Definisi & Fungsi Sosial */}
+
     <motion.div
       initial={{ opacity: 0, x: 30 }}
       whileInView={{ opacity: 1, x: 0 }}
@@ -302,7 +300,6 @@ export default function Materi() {
         </p>
       </div>
 
-      {/* Rombakan Diagram Alir Kaku Menjadi Modul Konektor Futuristik */}
       <div className="glass-premium p-6 rounded-[2rem] bg-black/10 border border-white/5 flex flex-col md:flex-row items-center gap-4 relative overflow-hidden">
         <div className="flex-shrink-0 bg-[var(--color-emerald-glow)]/40 border border-[var(--color-gold-champagne)]/30 px-6 py-4 rounded-2xl text-[var(--color-gold-champagne)] font-arab text-xl font-bold text-center w-full md:w-auto min-w-[150px] shadow-inner relative z-10">
           النَّصُّ الوَصْفِيُّ
@@ -325,7 +322,7 @@ export default function Materi() {
     </motion.div>
   </div>
 
-  {/* Sub-Header Penerapan */}
+
   <div className="text-center mb-10 relative z-10">
     <h3 className="font-bold text-[var(--color-platinum)]/40 uppercase tracking-[0.2em] text-xs">
       Pembedahan Anatomi Struktur Teks Deskriptif
@@ -333,7 +330,7 @@ export default function Materi() {
     <div className="w-12 h-[1px] bg-white/10 mx-auto mt-3" />
   </div>
 
-  {/* Grid Penerapan Al-Washf Al-'Aam & Al-Khash */}
+
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
     {CONTOH_DESKRIPTIF.map((item, index) => (
       <motion.div
@@ -344,7 +341,7 @@ export default function Materi() {
         transition={{ duration: 0.6, delay: index * 0.2 }}
         className="glass-premium p-8 md:p-10 rounded-[2.5rem] flex flex-col h-full relative overflow-hidden group hover:shadow-[0_20px_50px_rgba(212,175,55,0.1)] transition-all duration-500"
       >
-        {/* Pendaran Internal saat Di-hover */}
+
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-emerald-glow)]/0 to-[var(--color-emerald-glow)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
         
         <div className="flex justify-between items-center mb-6 border-b border-white/5 pb-4">
@@ -356,12 +353,11 @@ export default function Materi() {
           </span>
         </div>
 
-        {/* Paragraf Arab Utama dengan Line Height dan Spacing yang Sangat Mewah */}
+
         <p className="font-arab text-2xl md:text-3xl leading-[2.1] md:leading-[2.3] text-[var(--color-gold-champagne)] text-right mb-8 flex-grow tracking-wide" dir="rtl">
           {item.arab}
         </p>
 
-        {/* Blok Karakteristik Berwarna Gelap Kontras */}
         <div className="bg-black/30 rounded-2xl p-5 border border-white/5 group-hover:border-[var(--color-gold-champagne)]/20 transition-colors duration-500">
           <strong className="text-[var(--color-gold-light)] block mb-1.5 text-xs font-black uppercase tracking-widest flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-gold-champagne)]" /> Aturan Karakteristik
@@ -373,7 +369,7 @@ export default function Materi() {
       </motion.div>
     ))}
   </div>
-</div>
+</div> */}
 
 
         {/* =========================================

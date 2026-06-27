@@ -49,7 +49,8 @@ export default function Hero({ setActivePage }) {
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]); // Parallax pelan untuk video
 
   return (
-    <section ref={ref} className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center p-6 lg:p-12 xl:p-24 overflow-hidden gap-12 lg:gap-8">
+    // REVISI: Mengubah padding (pt-32 pb-24) dan overflow-x-hidden agar scroll di mobile lebih lega
+    <section ref={ref} className="relative min-h-screen flex flex-col lg:flex-row items-center justify-center pt-32 pb-24 px-5 md:px-12 lg:p-12 xl:p-24 overflow-x-hidden gap-16 lg:gap-8">
       
       {/* --- AMBIENT GLOW GLOBAL --- */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--color-emerald-glow)] rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-pulse pointer-events-none" />
@@ -61,7 +62,7 @@ export default function Hero({ setActivePage }) {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-        className="relative z-10 w-full lg:w-5/12 text-center lg:text-left flex flex-col items-center lg:items-start mt-10 lg:mt-0"
+        className="relative z-10 w-full lg:w-5/12 text-center lg:text-left flex flex-col items-center lg:items-start"
       >
         {/* --- LOGO PRIBADI DENGAN HALO GLOW --- */}
         <motion.div
@@ -109,7 +110,7 @@ export default function Hero({ setActivePage }) {
           transition={{ delay: 0.9, duration: 0.8 }}
           className="text-base md:text-lg lg:text-xl text-[var(--color-platinum)] opacity-80 font-light mb-10 leading-loose max-w-lg tracking-wide"
         >
-          Jelajahi keanekaragaman dan toleransi beragama melalui antarmuka interaktif yang dirancang khusus untuk kenyamanan visual tingkat tinggi.
+          Jelajahi keanekaragaman dan toleransi beragama melalui bahan ajar interaktif yang dirancang khusus pembelajaran bahasa arab Maharah Qiro'ah kelas XI Madrasah Aliyah
         </motion.p>
 
         {/* --- GRUP TOMBOL (Ditumpuk secara vertikal) --- */}
@@ -129,7 +130,7 @@ export default function Hero({ setActivePage }) {
             </span>
           </MagneticButton>
 
-          {/* Tombol 2: Petunjuk Penggunaan (Dibuat sedikit transparan agar hierarkinya sebagai tombol kedua lebih jelas) */}
+          {/* Tombol 2: Petunjuk Penggunaan */}
           <MagneticButton onClick={() => setActivePage('intro')} className="bg-black/20 border-white/5 hover:border-[var(--color-gold-champagne)]/30">
             <span className="flex items-center justify-center gap-3">
               <svg className="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +149,8 @@ export default function Hero({ setActivePage }) {
         initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
         transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
-        className="relative z-10 w-full lg:w-7/12 flex justify-center perspective-1000"
+        // REVISI: Menambahkan mt-8 md:mt-12 lg:mt-0 mb-12 agar video terdorong ke bawah di mode HP
+        className="relative z-10 w-full lg:w-7/12 flex justify-center perspective-1000 mt-8 md:mt-12 lg:mt-0 mb-12 lg:mb-0"
       >
         {/* Wadah Video bergaya Kaca Premium */}
         <div className="relative w-full max-w-2xl aspect-video md:aspect-[4/3] lg:aspect-video rounded-[2.5rem] md:rounded-[3rem] glass-premium p-3 md:p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-[var(--color-gold-champagne)]/20 overflow-hidden group">
